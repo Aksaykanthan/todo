@@ -20,23 +20,26 @@ class Task extends StatelessWidget {
           toggleDone(todo!);
         },
         child: Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           color: todo!.is_done ? Colors.grey[400] : Colors.white,
-          child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Text(
-              todo!.text!,
-              style: TextStyle(
-                decoration: todo!.is_done ? TextDecoration.lineThrough : null,
-                fontSize: 18,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                todo!.text!,
+                style: TextStyle(
+                  decoration: todo!.is_done ? TextDecoration.lineThrough : null,
+                  fontSize: 18,
+                ),
               ),
-            ),
-            IconButton(
+              IconButton(
                 onPressed: () {
                   deleteTask(todo!.id!);
                 },
-                icon: Icon(Icons.delete))
-          ]),
+                icon: const Icon(Icons.delete),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:todo/todo.dart';
 import 'package:todo/widget/input.dart';
 import 'package:todo/widget/task.dart';
 
 class Home extends StatefulWidget {
-  Home({super.key});
+  const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
@@ -21,26 +22,29 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.grey[900],
         title: const Text(
           'ToDo App',
-          style: TextStyle(color: Colors.white),
+          textAlign: TextAlign.center,
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
-      body: Column(
-        children: [
-          InputBox(addtask: _addtask),
-          for (Todo todo in todolist.reversed)
-            Task(
-              todo: todo,
-              toggleDone: _toggleDone,
-              deleteTask: _deleteTask,
-            ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            for (Todo todo in todolist)
+              Task(
+                todo: todo,
+                toggleDone: _toggleDone,
+                deleteTask: _deleteTask,
+              ),
+            InputBox(addtask: _addtask),
+          ],
+        ),
       ),
     );
   }
 
   void _toggleDone(Todo todo) {
     setState(() {
-      todo.is_done = !todo.is_done;
+      todo.isdone = !todo.isdone;
     });
   }
 
@@ -51,12 +55,12 @@ class _HomeState extends State<Home> {
   }
 
   void _addtask(String newtask) {
-
     setState(() {
-      
-    todolist.add(Todo(
-        id: DateTime.now().microsecondsSinceEpoch.toString(), text: newtask));
+      if (newtask != '') {
+        todolist.add(Todo(
+            id: DateTime.now().microsecondsSinceEpoch.toString(),
+            text: newtask));
+      }
     });
-
   }
 }

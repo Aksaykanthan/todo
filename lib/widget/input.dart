@@ -9,23 +9,26 @@ class InputBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       child: Container(
+        height: 60,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: Colors.white,
         ),
-        child: TextField(
-          controller: newtask,
-          decoration: InputDecoration(
-              contentPadding: EdgeInsets.all(10),
-              suffixIcon: IconButton(
-                icon: Icon(Icons.add),
-                onPressed: () => {addtask(newtask.text)},
-              ),
-              hintText: 'Task',
-              fillColor: Colors.green,
-              border: InputBorder.none),
+        child: Center(
+          child: TextField(
+            controller: newtask,
+            decoration: InputDecoration(
+                contentPadding: const EdgeInsets.all(10),
+                suffixIcon: IconButton(
+                  icon: const Icon(Icons.add),
+                  onPressed: () => {addtask(newtask.text)},
+                ),
+                hintText: 'Task',
+                fillColor: Colors.green,
+                border: InputBorder.none),
+          ),
         ),
       ),
     );

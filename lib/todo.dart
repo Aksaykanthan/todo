@@ -1,22 +1,18 @@
+
 class Todo {
   String? id;
   String? text;
-  bool is_done;
+  bool isdone;
 
   Todo({
     required this.id,
     required this.text,
-    this.is_done = false,
+    this.isdone = false,
   });
 
   static List<Todo> todoList() {
-    return [
-
-      Todo(
-          id: DateTime.now().microsecondsSinceEpoch.toString(),
-          text: "Coding",
-          ),
-
-    ];
+    return [];
   }
 }
+
+
